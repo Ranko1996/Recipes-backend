@@ -43,8 +43,9 @@ export class PostController {
     @HttpCode(HttpStatus.NO_CONTENT)
     @Delete(':id')
     deletePost(
-        @GetUser('id') id: number,
-        @Param('id', ParseIntPipe) postId: number) {
-            return this.deletePost(id, postId)
+        @GetUser('id') userId: number,
+        @Param('id', ParseIntPipe) postId: number
+    ) {
+            return this.deletePost(userId, postId)
         }
 }
