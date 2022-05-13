@@ -24,6 +24,7 @@ model User {
   userName String?
   
   posts Post[]
+  comments Comment[]
 
   @@map("users")
 }
@@ -41,5 +42,21 @@ model Post {
   userId Int
   user User @relation(fields: [userId], references: [id])
 
+  comments Comment[]
+
   @@map("posts")
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  content String
+
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+
+  postId Int
+  post Post @relation(fields: [postId], references: [id])
 }
