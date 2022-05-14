@@ -6,19 +6,18 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class CommentService {
     constructor(private prisma: PrismaService) {}
 
-    getComments(postId: number) {
+    getComments(post: number) {
         return this.prisma.comment.findMany({
-            where: {
-                id: postId
-            }
+           where: {
+               postId: post
+           }
         })
     }
 
-    async postComment(userId, postId, dto) {
+    async postComment(userId, dto) {
         const comment = await this.prisma.comment.create({
             data: {
                 userId: userId,
-                postId: postId,
                 ...dto,
             }
         })

@@ -10,24 +10,23 @@ import { AddCommentDto } from './dto';
 export class CommentController {
     constructor(private commentService: CommentService) {}
      
-    @Get()
+    @Get(':id')
     getComments(
-        @Body('id', ParseIntPipe) postId: number
+        @Param('id', ParseIntPipe) post: number
     ) {
-        return this.commentService.getComments(postId)
+        return this.commentService.getComments(post)
     }
 
     @Post()
     postComment(
         @GetUser('id') userId: number, 
-        @Body('id', ParseIntPipe) postId: number,
         @Body() dto: AddCommentDto
     ) {
-        return this.commentService.postComment(userId, postId, dto)
+        return this.commentService.postComment(userId, dto)
     }
 
     @HttpCode(HttpStatus.NO_CONTENT)
-    @Delete()
+    @Delete(':id')
     deleteComment(
         @GetUser('id') userId: number,
         @Param('id', ParseIntPipe) commentId: number
