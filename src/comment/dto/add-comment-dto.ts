@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { Transform } from "class-transformer";
 import { IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export class AddCommentDto {
@@ -8,5 +9,6 @@ export class AddCommentDto {
 
     @IsNumber()
     @IsNotEmpty()
+    @Transform(({ value }) => parseInt(value))
     postId: number
 }
