@@ -46,6 +46,6 @@ export class PostController {
         @GetUser('id') userId: number,
         @Param('id', ParseIntPipe) postId: number
     ) {
-            return this.deletePost(userId, postId)
+            return this.postService.deletePost(userId, postId)
         }
 }
