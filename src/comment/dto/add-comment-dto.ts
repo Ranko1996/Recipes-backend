@@ -11,4 +11,8 @@ export class AddCommentDto {
     @IsNotEmpty()
     @Transform(({ value }) => parseInt(value))
     postId: number
+
+    @IsNotEmpty()
+    @IsString()
+    userMail: string
 }

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { IsEmail, IsNotEmpty, IsString } from "class-validator"
 
-export class AuthDto {
+export class AuthorizationDto {
     @IsEmail()
     @IsNotEmpty()
     email: string

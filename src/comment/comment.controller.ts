@@ -12,7 +12,7 @@ export class CommentController {
      
     @Get(':id')
     getComments(
-        @Param('id', ParseIntPipe) post: number
+        @Param('id', ParseIntPipe) post: number,
     ) {
         return this.commentService.getComments(post)
     }

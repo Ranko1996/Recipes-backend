@@ -24,4 +24,10 @@ export class UserController {
         return true;
     }
     
+    @Get('email')
+    getMail(
+        @GetUser('email') email: string
+    ) {
+        return email;
+    }
 }

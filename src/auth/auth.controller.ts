@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Body, Controller, HttpCode, HttpStatus, Post } from "@nestjs/common";
 import { AuthService } from "./auth.service";
-import { AuthDto } from "./dto";
+import { AuthorizationDto } from "./dto";
 
 @Controller('auth')
 export class AuthController{
@@ -9,13 +9,13 @@ export class AuthController{
 
         @HttpCode(HttpStatus.CREATED)
         @Post('signup')
-        signup(@Body() dto: AuthDto) {
+        signup(@Body() dto: AuthorizationDto) {
             return this.authService.signup(dto)
         }
 
         @HttpCode(HttpStatus.OK)
         @Post('signin')        
-        singin(@Body() dto: AuthDto) {
+        singin(@Body() dto: AuthorizationDto) {
             return this.authService.signin(dto)
         }
 

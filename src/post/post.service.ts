@@ -15,11 +15,23 @@ export class PostService {
         })     
     }
 
+    getAllPosts(userId: number){
+        return this.prisma.post.findMany()
+    }
+
     getPost(userId: number, postId: number) {
         return this.prisma.post.findFirst({
             where: {
                 id: postId,
                 userId,
+            }
+        })
+    }
+
+    getPostPublic(postId: number) {
+        return this.prisma.post.findFirst({
+            where: {
+                id: postId,
             }
         })
     }

@@ -10,6 +10,11 @@ import { PostService } from './post.service';
 export class PostController {
     constructor(private postService: PostService) {}
 
+    @Get('all')
+    getAllPosts(@GetUser('id') userId: number){
+        return this.postService.getAllPosts(userId)
+    }
+
     @Get()
     getPosts(@GetUser('id') userId: number) {
         return this.postService.getPosts(userId)
@@ -21,6 +26,13 @@ export class PostController {
         @Param('id', ParseIntPipe) postId: number,
     ) {
         return this.postService.getPost(userId, postId)
+    }
+
+    @Get('all/:id')
+    getPostPublic(
+        @Param('id', ParseIntPipe) postId: number,
+    ) {
+        return this.postService.getPostPublic(postId)
     }
 
     @Post()
